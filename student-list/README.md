@@ -1,3 +1,16 @@
-# student-list 
+# Student-list 
 This repo is a simple application to list student with a webserver (PHP) and API (Flask)
-docker run --name NomContainer -p 80:5000(port expose en 80) -v {PWD}/student-list.json:data/student-list.json -d NomImage:Tags
+
+## *Modifie index.php*
+Modifie line 29:
+`api_ip_or_name: app-v1` 
+`port: 5000`
+## *Test application*
+Run command:
+```
+docker run --name NameContainer -p 80:5000 -v ${PWD}/student_age.json:data/student_age.json NameImages:Tags
+```
+## *Open other terminal*
+```
+curl -u toto:python -X GET http://host_ip:port/pozos/api/v1.0/get_student_ages
+```
