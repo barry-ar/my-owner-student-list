@@ -1,19 +1,28 @@
-version: '3'
+version: "3.7"
 services:
-  website:
-    image: php:apache
-    environment:
-      USERNAME: "toto"
-      PASSWORD: "tata"
+  pozos-website:
+    image:  php:apache
     volumes:
       - ./website:/var/www/html
-    depends_on:
-      - api
+    environment:
+      USERNAME: "toto"
+      PASSWORD: "python"
+    networks:
+      - pozos
     ports:
       - 8002:80
-  api:
-    image: pozos_image
+    depends_on:
+      - pozos-api
+
+  pozos-api:
+    image: api-pozos:0.1
     volumes:
-      - ./home/centos/dockerTp1/student-list/simple_api/student_age.json:/data/student.json
-    ports: 
+      - ./simple_api/student_age.json:/data/student_age.json
+    ports:
       - 4000:5000
+    networks:
+      - pozos
+
+networks:
+  pozos:
+    name: pozos
