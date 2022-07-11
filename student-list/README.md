@@ -10,6 +10,13 @@ Run command:
 ```
 docker run --name NameContainer -p 80:5000 -v ${PWD}/student_age.json:data/student_age.json NameImages:Tags
 ```
+
+## Run docker compose
+````
+docker-compose build 
+docker-compose up -d
+````
+
 ## *Open other terminal*
 ```
 curl -u toto:python -X GET http://host_ip:port/pozos/api/v1.0/get_student_ages

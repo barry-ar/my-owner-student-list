@@ -15,9 +15,13 @@ services:
       - pozos-api
 
   pozos-api:
-    image: api-pozos:0.1
+    platform: linux/arm64/v8
+    build: 
+      context: .
+      dockerfile: ./simple_api/Dockerfile
     volumes:
       - ./simple_api/student_age.json:/data/student_age.json
+      - $HOME/.aws:/root/.aws
     ports:
       - 4000:5000
     networks:
